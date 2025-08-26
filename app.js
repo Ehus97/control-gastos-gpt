@@ -5,15 +5,14 @@ const API_URL = "https://script.google.com/macros/s/AKfycbyBhfm-Yo4XNrBvjJoJmbMq
 
 // Subcategorías dinámicas para gastos
 const categorias = {
-  "Gastos Fijos": ["Internet","Agua Purificada MAIM","Estacionamiento YKT","Servicios Apple"],
   "Vivienda": ["Agua","Luz","Gas","Empleada Doméstica","Otros"],
   "Coches": ["Combustible","Seguros","Trámites","Mantenimiento","Estacionamiento","TAG","Otros"],
   "Alimentación": ["Comestibles","Vales","Restaurantes","Otros"],
   "Educación": ["Colegiatura","Inscripciones","Útiles","Clases tarde","Terapias"],
   "Ahorros o Inversiones": ["Seguro GMM","Vacaciones","Inversión","Ahorro"],
-  "EDI": ["Comidas","Cosas","Ropa","Medicinas","Gimnasio","Peluquería","Otros"],
-  "Frida": ["Comidas","Cosas","Pelucas","Belleza","Ropa","Medicinas","Clases","Otros"],
-  "Niños": ["Pañales","Doctor","Vacunas","Medicinas","Ropa","Cosas","Otros"],
+  "Edi": ["Comidas","Cosas","Ropa","Medicinas","Gimnasio","Peluquería","Otros"],
+  "Frida": ["Comidas","Cosas","Pelucas","Belleza","Ropa","Consulta Medica","Medicinas","Clases","Otros"],
+  "Niños": ["Pañales","Consulta Medica","Vacunas","Medicinas","Ropa","Cosas","Otros"],
   "Regalos y Donativos": ["Donativos","Regalos"]
 };
 
