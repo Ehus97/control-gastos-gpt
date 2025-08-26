@@ -4,45 +4,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registrar Gasto</title>
 <link rel="stylesheet" href="style.css">
-  <script>
-    const categorias = {
-      "Gastos Fijos": ["Internet","Agua Purificada MAIM","Estacionamiento YKT","Servicios Apple"],
-      "Vivienda": ["Agua","Luz","Gas","Empleada Doméstica","Otros"],
-      "Coches": ["Combustible","Seguros","Trámites","Mantenimiento","Estacionamiento","TAG","Otros"],
-      "Alimentación": ["Comestibles","Vales","Restaurantes","Otros"],
-      "Educación": ["Colegiatura","Inscripciones","Útiles","Clases tarde","Terapias"],
-      "Ahorros o Inversiones": ["Seguro GMM","Vacaciones","Inversión","Ahorro"],
-      "EDI": ["Comidas","Cosas","Ropa","Medicinas","Gimnasio","Peluquería","Otros"],
-      "Frida": ["Comidas","Cosas","Pelucas","Belleza","Ropa","Medicinas","Clases","Otros"],
-      "Niños": ["Pañales","Doctor","Vacunas","Medicinas","Ropa","Cosas","Otros"],
-      "Regalos y Donativos": ["Donativos","Regalos"]
-    };
-
-    function cargarSubcategorias() {
-      const cat = document.getElementById("categoria").value;
-      const subcat = document.getElementById("subcategoria");
-      subcat.innerHTML = "";
-      categorias[cat].forEach(s => {
-        let opt = document.createElement("option");
-        opt.value = s; opt.text = s;
-        subcat.add(opt);
-      });
-    }
-
-    function enviarGasto() {
-      const data = {
-        categoria: document.getElementById("categoria").value,
-        subcategoria: document.getElementById("subcategoria").value,
-        fecha: document.getElementById("fecha").value,
-        monto: document.getElementById("monto").value,
-        descripcion: document.getElementById("descripcion").value
-      };
-      google.script.run.withSuccessHandler(() => {
-        alert("Gasto registrado ✅");
-        document.getElementById("formGasto").reset();
-      }).registrarGasto(data);
-    }
-  </script>
 </head>
 <body>
   <h2>Registrar Gasto</h2>
@@ -66,15 +27,13 @@
 
     <button type="submit">Guardar Gasto</button>
   </form>
+  <!-- JS externo -->
+  <script src="app.js"></script>
+
+  <!-- Inicializar categorías al cargar -->
   <script>
-    // Llenar categorías al iniciar
-    window.onload = () => {
-      const catSel = document.getElementById("categoria");
-      for (let c in categorias) {
-        let opt = document.createElement("option");
-        opt.value = c; opt.text = c;
-        catSel.add(opt);
-      }
+    window.onload = function() {
+      if(document.getElementById("categoria")) cargarCategorias();
     };
   </script>
 </body>
