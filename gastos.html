@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registrar Gasto</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h2>Registrar Gasto</h2>
-  <form id="formGasto" onsubmit="event.preventDefault(); enviarGasto();">
-    <label>Categoría</label>
-    <select id="categoria" onchange="cargarSubcategorias()" required>
-      <option value="">--Selecciona--</option>
-    </select>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrar Gasto</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>Registrar Gasto</h2>
+    <form id="formGasto" onsubmit="event.preventDefault(); enviarGasto();">
+      <label>Categoría</label>
+      <select id="categoria" onchange="cargarSubcategorias()" required>
+        <option value="">--Selecciona--</option>
+      </select>
 
-    <label>Subcategoría</label>
-    <select id="subcategoria" required></select>
+      <label>Subcategoría</label>
+      <select id="subcategoria" required></select>
 
-    <label>Fecha</label>
-    <input type="date" id="fecha" required>
+      <label>Fecha</label>
+      <input type="date" id="fecha" required />
 
-    <label>Monto</label>
-    <input type="number" id="monto" step="0.01" required>
+      <label>Monto</label>
+      <input type="number" id="monto" step="0.01" required />
 
-    <label>Descripción</label>
-    <textarea id="descripcion"></textarea>
+      <label>Descripción</label>
+      <textarea id="descripcion"></textarea>
 
-    <button type="submit">Guardar Gasto</button>
-  </form>
-  <a href="index.html" class="btn back">⬅ Volver al Inicio</a>
+      <button type="submit">Guardar Gasto</button>
+    </form>
+    <a href="index.html" class="btn back">⬅ Volver al Inicio</a>
 
-  <!-- JS externo -->
-  <script src="app.js"></script>
+    <!-- JS externo -->
+    <script src="app.js"></script>
 
-  <!-- Inicializar categorías al cargar -->
-  <script>
-    window.onload = function() {
-      if(document.getElementById("categoria")) cargarCategorias();
-    };
-  </script>
-</body>
+    <!-- Inicializar categorías al cargar -->
+    <script>
+      window.onload = function () {
+        if (document.getElementById("categoria")) cargarCategorias();
+      };
+    </script>
+  </body>
 </html>
