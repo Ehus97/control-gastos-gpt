@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrar Ingreso</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input, select, textarea, button {
+      width: 100%; padding: 10px; margin-top: 5px; border-radius: 8px; border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button { background: #5cb85c; color: white; border: none; margin-top: 15px; }
+    button:hover { background: #4cae4c; }
+  </style>
+  <script>
+    function enviarIngreso() {
+      const data = {
+        fuente: document.getElementById("fuente").value,
+        fecha: document.getElementById("fecha").value,
+        monto: document.getElementById("monto").value,
+        descripcion: document.getElementById("descripcion").value
+      };
+      google.script.run.withSuccessHandler(() => {
+        alert("Ingreso registrado ✅");
+        document.getElementById("formIngreso").reset();
+      }).registrarIngreso(data);
+    }
+  </script>
+</head>
+<body>
+  <h2>Registrar Ingreso</h2>
+  <form id="formIngreso" onsubmit="event.preventDefault(); enviarIngreso();">
+    <label>Fuente</label>
+    <select id="fuente" required>
+      <option value="">--Selecciona--</option>
+      <option>Salario</option>
+      <option>Bonos</option>
+      <option>Inversiones</option>
+      <option>Otros</option>
+    </select>
+
+    <label>Fecha</label>
+    <input type="date" id="fecha" required>
+
+    <label>Monto</label>
+    <input type="number" id="monto" step="0.01" required>
+
+    <label>Descripción</label>
+    <textarea id="descripcion"></textarea>
+
+    <button type="submit">Guardar Ingreso</button>
+  </form>
+</body>
+</html>
