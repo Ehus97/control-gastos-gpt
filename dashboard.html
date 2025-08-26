@@ -5,40 +5,14 @@
   <title>Dashboard</title>
   <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script>
-    google.charts.load('current', {packages:['corechart','bar']});
-    google.charts.setOnLoadCallback(cargarDashboard);
-
-    function cargarDashboard() {
-      google.script.run.withSuccessHandler(dibujarGraficos).obtenerDashboardData();
-    }
-
-    function dibujarGraficos(data) {
-      // Ingresos vs Gastos
-      const barData = google.visualization.arrayToDataTable([
-        ['Tipo','Monto'],
-        ['Ingresos', data.totalIngresos],
-        ['Gastos', data.totalGastos]
-      ]);
-      new google.visualization.ColumnChart(document.getElementById('barChart'))
-        .draw(barData, {title:'Ingresos vs Gastos (Mes actual)', colors:['#5cb85c','#d9534f']});
-
-      // Pie Gastos
-      const pieGastos = google.visualization.arrayToDataTable(data.gastosPorCategoria);
-      new google.visualization.PieChart(document.getElementById('pieGastos'))
-        .draw(pieGastos, {title:'Gastos por Categoría', pieHole:0.3});
-
-      // Pie Ingresos
-      const pieIngresos = google.visualization.arrayToDataTable(data.ingresosPorFuente);
-      new google.visualization.PieChart(document.getElementById('pieIngresos'))
-        .draw(pieIngresos, {title:'Ingresos por Fuente', pieHole:0.3});
-    }
-  </script>
 </head>
 <body>
   <h2>Dashboard</h2>
   <div id="barChart" class="chart" style="height:300px;"></div>
   <div id="pieGastos" class="chart" style="height:300px;"></div>
   <div id="pieIngresos" class="chart" style="height:300px;"></div>
+  
+  <script src="app.js"></script>
+  
 </body>
 </html>
