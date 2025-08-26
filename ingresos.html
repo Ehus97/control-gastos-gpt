@@ -4,20 +4,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registrar Ingreso</title>
 <link rel="stylesheet" href="style.css">
-  <script>
-    function enviarIngreso() {
-      const data = {
-        fuente: document.getElementById("fuente").value,
-        fecha: document.getElementById("fecha").value,
-        monto: document.getElementById("monto").value,
-        descripcion: document.getElementById("descripcion").value
-      };
-      google.script.run.withSuccessHandler(() => {
-        alert("Ingreso registrado ✅");
-        document.getElementById("formIngreso").reset();
-      }).registrarIngreso(data);
-    }
-  </script>
 </head>
 <body>
   <h2>Registrar Ingreso</h2>
@@ -42,5 +28,6 @@
 
     <button type="submit">Guardar Ingreso</button>
   </form>
+  <script src="app.js"></script>
 </body>
 </html>
