@@ -1,5 +1,5 @@
 // URL de tu Apps Script
-const API_URL = "TU_URL_DEL_WEBAPP"; // Cambia por la URL final
+const API_URL = "https://script.google.com/macros/s/AKfycbzfItO2P9w2yUxPpgvWyDlIHE5XFZkG7VbYaYutoy0BzLlnT9YKHHiYqhUvLgT18KYs/exec"; // Cambia por la URL final
 
 /* ---------------- Formularios ---------------- */
 
