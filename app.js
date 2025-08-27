@@ -1,6 +1,6 @@
 // URL de tu Apps Script
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbyBhfm-Yo4XNrBvjJoJmbMqMDQE13e2f5BFsIDuefA72TWxY-wED3Ei79llWvJSpND7/exec"; // Cambia por la URL final
+  "https://script.google.com/macros/s/AKfycbyd1igS3x7_cuMlCKzlfqfB02qy4yBQyJMwHK_FmJv0ArUoYBQRRtnbejukqKHOeRF4/exec"; // Cambia por la URL final
 
 /* ---------------- Formularios ---------------- */
 
