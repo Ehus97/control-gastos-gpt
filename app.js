@@ -1,6 +1,6 @@
 // URL de tu Apps Script
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbyXks3oWKUawyqunrkMAAxr7FPNxpNVWfMfMiyc-n_BChj7JKCqwX8iqlYKjyvDHli5/exec"; // Cambia por la URL final
+  "https://script.google.com/macros/s/AKfycbwJPgx_qbAIKm8e-IkLDw-b56VMlCfKCdMJZSMVIkujjRCEn3DKtA1hkYHQYHnMAC9b/exec"; // Cambia por la URL final
 
 /* ---------------- Formularios ---------------- */
 
@@ -85,24 +85,21 @@ function cargarSubcategorias() {
   });
 }
 
-// Enviar gasto al Sheets
+// Enviar gasto con GET
 function enviarGasto(e) {
-  e.preventDefault(); // evitar que el form recargue la página
-  const data = {
+  e.preventDefault();
+  const params = new URLSearchParams({
+    action: "gasto",
     categoria: document.getElementById("categoria").value,
     subcategoria: document.getElementById("subcategoria").value,
     fecha: document.getElementById("fecha").value,
     monto: document.getElementById("monto").value,
     descripcion: document.getElementById("descripcion").value,
-  };
+  });
 
-  fetch(API_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ action: "gasto", data }),
-  })
-    .then((r) => r.json())
-    .then((res) => {
+  fetch(`${API_URL}?${params.toString()}`)
+    .then(r => r.json())
+    .then(res => {
       if (res.success) {
         alert("Gasto registrado ✅");
         document.getElementById("formGasto").reset();
@@ -110,26 +107,23 @@ function enviarGasto(e) {
         alert("Error: " + (res.message || res.error));
       }
     })
-    .catch((err) => alert("Error al enviar: " + err.message));
+    .catch(err => alert("Error al enviar: " + err.message));
 }
 
-// Enviar ingreso al Sheets
+// Enviar ingreso con GET
 function enviarIngreso(e) {
   e.preventDefault();
-  const data = {
+  const params = new URLSearchParams({
+    action: "ingreso",
     fuente: document.getElementById("fuente").value,
     fecha: document.getElementById("fecha").value,
     monto: document.getElementById("monto").value,
     descripcion: document.getElementById("descripcion").value,
-  };
+  });
 
-  fetch(API_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ action: "ingreso", data }),
-  })
-    .then((r) => r.json())
-    .then((res) => {
+  fetch(`${API_URL}?${params.toString()}`)
+    .then(r => r.json())
+    .then(res => {
       if (res.success) {
         alert("Ingreso registrado ✅");
         document.getElementById("formIngreso").reset();
@@ -137,7 +131,7 @@ function enviarIngreso(e) {
         alert("Error: " + (res.message || res.error));
       }
     })
-    .catch((err) => alert("Error al enviar: " + err.message));
+    .catch(err => alert("Error al enviar: " + err.message));
 }
 
 /* ---------------- Dashboard ---------------- */
