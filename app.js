@@ -86,58 +86,59 @@ function cargarSubcategorias() {
 }
 
 // Enviar gasto al Sheets
-function enviarGasto() {
+function enviarGasto(e) {
+  e.preventDefault(); // evitar que el form recargue la página
   const data = {
     categoria: document.getElementById("categoria").value,
     subcategoria: document.getElementById("subcategoria").value,
     fecha: document.getElementById("fecha").value,
     monto: document.getElementById("monto").value,
-    descripcion: document.getElementById("descripcion").value
+    descripcion: document.getElementById("descripcion").value,
   };
 
   fetch(API_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ action: 'gasto', data })
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ action: "gasto", data }),
   })
-  .then(r => r.json())
-  .then(res => {
-    if (res.success) {
-      alert('Gasto registrado ✅');
-      document.getElementById('formGasto').reset();
-    } else {
-      alert('Error: ' + (res.message || res.error));
-    }
-  })
-  .catch(err => alert('Error al enviar: ' + err.message));
+    .then((r) => r.json())
+    .then((res) => {
+      if (res.success) {
+        alert("Gasto registrado ✅");
+        document.getElementById("formGasto").reset();
+      } else {
+        alert("Error: " + (res.message || res.error));
+      }
+    })
+    .catch((err) => alert("Error al enviar: " + err.message));
 }
 
 // Enviar ingreso al Sheets
-function enviarIngreso() {
+function enviarIngreso(e) {
+  e.preventDefault();
   const data = {
     fuente: document.getElementById("fuente").value,
     fecha: document.getElementById("fecha").value,
     monto: document.getElementById("monto").value,
-    descripcion: document.getElementById("descripcion").value
+    descripcion: document.getElementById("descripcion").value,
   };
 
   fetch(API_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ action: 'ingreso', data })
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ action: "ingreso", data }),
   })
-  .then(r => r.json())
-  .then(res => {
-    if (res.success) {
-      alert('Ingreso registrado ✅');
-      document.getElementById('formIngreso').reset();
-    } else {
-      alert('Error: ' + (res.message || res.error));
-    }
-  })
-  .catch(err => alert('Error al enviar: ' + err.message));
+    .then((r) => r.json())
+    .then((res) => {
+      if (res.success) {
+        alert("Ingreso registrado ✅");
+        document.getElementById("formIngreso").reset();
+      } else {
+        alert("Error: " + (res.message || res.error));
+      }
+    })
+    .catch((err) => alert("Error al enviar: " + err.message));
 }
-
 
 /* ---------------- Dashboard ---------------- */
 google.charts.load("current", { packages: ["corechart", "bar"] });
