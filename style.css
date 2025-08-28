@@ -164,3 +164,26 @@ button:hover, .btn:hover {
   background: var(--danger);
   color: var(--text);
 }
+
+/* Variantes de botones */
+.btn-rojo {
+  background: #dc3545;
+  background: linear-gradient(145deg, #ed4255 0%, #c62a39 100%);
+}
+
+.btn-verde {
+  background: #28a745;
+  background: linear-gradient(145deg, #2ebd4e 0%, #218838 100%);
+}
+
+.btn-info {
+  background: #17a2b8;
+  background: linear-gradient(145deg, #1ab6cf 0%, #138496 100%);
+}
+
+.btn-rojo:hover,
+.btn-verde:hover,
+.btn-info:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
