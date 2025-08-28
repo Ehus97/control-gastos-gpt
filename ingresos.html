@@ -6,29 +6,36 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h2>Registrar Ingreso</h2>
-    <form id="formIngreso" onsubmit="event.preventDefault(); enviarIngreso();">
-      <label>Fuente</label>
-      <select id="fuente" required>
-        <option value="">--Selecciona--</option>
-        <option>Salario</option>
-        <option>Bonos</option>
-        <option>Inversiones</option>
-        <option>Otros</option>
-      </select>
-
-      <label>Fecha</label>
-      <input type="date" id="fecha" required />
-
-      <label>Monto</label>
-      <input type="number" id="monto" step="0.01" required />
-
-      <label>Descripción</label>
-      <textarea id="descripcion"></textarea>
-
-      <button type="submit">Guardar Ingreso</button>
-    </form>
-    <a href="index.html" class="btn back">⬅ Volver al Inicio</a>
+    <div class="wrap">
+      <h1>Registrar Ingreso</h1>
+      <div class="card">
+        <div class="controls">
+          <form
+            id="formIngreso"
+            onsubmit="event.preventDefault(); enviarIngreso();"
+          >
+            <label
+              >Fuente<select id="fuente" required>
+                <option value="">--Selecciona--</option>
+                <option>Tefila</option>
+                <option>KMA</option>
+                <option>Bet Hashem</option>
+                <option>Dani Varon</option>
+                <option>Salame</option>
+                <option>Amude Haolam</option>
+              </select></label
+            >
+            <label>Fecha<input type="date" id="fecha" required /></label>
+            <label
+              >Monto<input type="number" id="monto" step="0.01" required
+            /></label>
+            <label>Descripción<textarea id="descripcion"></textarea></label>
+            <button type="submit">Guardar Ingreso</button>
+          </form>
+          <a href="index.html" class="btn back">⬅ Volver al Inicio</a>
+        </div>
+      </div>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>
