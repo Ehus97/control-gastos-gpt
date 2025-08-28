@@ -1,54 +1,165 @@
-/* Reset y fuente */
+:root {
+  --bg: #0b1220;
+  --card: #111a2e;
+  --muted: #91a0b6;
+  --text: #e7eefc;
+  --accent: #5b8eff;
+  --border: #1f2a44;
+  --row: #0f1830;
+}
+* {
+  box-sizing: border-box;
+}
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
-  background: #f5f5f5;
-  color: #333;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: #0b1220;
+  color: var(--text);
 }
-
-/* Contenedor central */
-.container {
-  max-width: 600px;
-  margin: 20px auto;
-  background: #fff;
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-/* Titulos */
-h1,
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* Formularios */
-form {
+h1 {
+  margin: 6px 0 14px;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+  align-items: center;
 }
-
-label {
-  font-weight: bold;
+.h-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
 }
-
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  align-items: center;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
 input,
 select,
-textarea,
 button {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0d1530;
+  color: var(--text);
+  outline: none;
+  align-items: center;
 }
-
-textarea {
-  resize: vertical;
+button {
+  cursor: pointer;
 }
-
+.btn {
+  background: linear-gradient(180deg, var(--accent) 0%, #436fe0 100%);
+  color: #fff;
+  font-weight: 600;
+  border: 0;
+}
+.btn-ghost {
+  background: transparent;
+}
+.btn-link {
+  background: transparent;
+  text-decoration: none;
+  border: 1px solid var(--border);
+}
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+thead th {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #0b142b;
+  color: #b9c6dd;
+  text-align: left;
+  font-size: 13px;
+  letter-spacing: 0.2px;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 12px;
+}
+tbody td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+tbody tr:nth-child(even) {
+  background: var(--row);
+}
+.pill {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #10224a;
+  color: #d5e3ff;
+  font-weight: 600;
+}
+.qty {
+  width: 90px;
+}
+.price {
+  width: 120px;
+}
+.muted {
+  color: var(--muted);
+  font-size: 12px;
+}
+.toast {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  padding: 10px 12px;
+  background: #0f1b36;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: 0.2s;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.loader {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 10, 20, 0.35);
+  place-items: center;
+  z-index: 50;
+}
+.loader.show {
+  display: grid;
+}
+.spinner {
+  width: 46px;
+  height: 46px;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 /* Botones */
 button {
   background-color: #007bff;
@@ -97,28 +208,19 @@ a.btn-back:hover {
   background-color: #5a6268;
 }
 
-/* Gráficos */
-.chart {
-  margin: 20px auto;
-  max-width: 100%;
-  height: 300px;
+/* Formularios */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-/* Responsive */
-@media (max-width: 480px) {
-  .container {
-    padding: 15px;
-  }
+label {
+  font-weight: bold;
+  align-items: center;
+}
 
-  input,
-  select,
-  textarea,
-  button {
-    font-size: 14px;
-    padding: 8px;
-  }
 
-  .chart {
-    height: 250px;
-  }
+textarea {
+  resize: vertical;
 }
