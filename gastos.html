@@ -10,7 +10,7 @@
     <h1>Registrar Gasto</h1>
     <div class="card">
       <div class="controls">
-        <form id="formGasto" onsubmit="event.preventDefault(); enviarGasto();">
+        <form id="formGasto" onsubmit="enviarGasto(event);">
           <label>Categoría<select id="categoria" onchange="cargarSubcategorias()" required>
             <option value="">--Selecciona--</option>
           </select></label>
