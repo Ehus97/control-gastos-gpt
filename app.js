@@ -1,6 +1,6 @@
 // URL de tu Apps Script
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbxYT56S2BSmlVDjVAmCBFIFYgDynt4fd-tRpFvJBryQm5aDn2wdK-5EMS0l6dfAzz8p/exec"; // Cambia por la URL final
+  "https://script.google.com/macros/s/AKfycbyXks3oWKUawyqunrkMAAxr7FPNxpNVWfMfMiyc-n_BChj7JKCqwX8iqlYKjyvDHli5/exec"; // Cambia por la URL final
 
 /* ---------------- Formularios ---------------- */
 
@@ -92,14 +92,24 @@ function enviarGasto() {
     subcategoria: document.getElementById("subcategoria").value,
     fecha: document.getElementById("fecha").value,
     monto: document.getElementById("monto").value,
-    descripcion: document.getElementById("descripcion").value,
+    descripcion: document.getElementById("descripcion").value
   };
-  google.script.run
-    .withSuccessHandler(() => {
-      alert("Gasto registrado ✅");
-      document.getElementById("formGasto").reset();
-    })
-    .registrarGasto(data);
+
+  fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action: 'gasto', data })
+  })
+  .then(r => r.json())
+  .then(res => {
+    if (res.success) {
+      alert('Gasto registrado ✅');
+      document.getElementById('formGasto').reset();
+    } else {
+      alert('Error: ' + (res.message || res.error));
+    }
+  })
+  .catch(err => alert('Error al enviar: ' + err.message));
 }
 
 // Enviar ingreso al Sheets
@@ -108,15 +118,26 @@ function enviarIngreso() {
     fuente: document.getElementById("fuente").value,
     fecha: document.getElementById("fecha").value,
     monto: document.getElementById("monto").value,
-    descripcion: document.getElementById("descripcion").value,
+    descripcion: document.getElementById("descripcion").value
   };
-  google.script.run
-    .withSuccessHandler(() => {
-      alert("Ingreso registrado ✅");
-      document.getElementById("formIngreso").reset();
-    })
-    .registrarIngreso(data);
+
+  fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action: 'ingreso', data })
+  })
+  .then(r => r.json())
+  .then(res => {
+    if (res.success) {
+      alert('Ingreso registrado ✅');
+      document.getElementById('formIngreso').reset();
+    } else {
+      alert('Error: ' + (res.message || res.error));
+    }
+  })
+  .catch(err => alert('Error al enviar: ' + err.message));
 }
+
 
 /* ---------------- Dashboard ---------------- */
 google.charts.load("current", { packages: ["corechart", "bar"] });
