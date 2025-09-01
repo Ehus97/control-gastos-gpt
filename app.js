@@ -93,6 +93,7 @@ function enviarGasto(e) {
     categoria: document.getElementById("categoria").value,
     subcategoria: document.getElementById("subcategoria").value,
     fecha: document.getElementById("fecha").value,
+    formaPago: document.getElementById("formaPago").value,
     monto: document.getElementById("monto").value,
     descripcion: document.getElementById("descripcion").value,
   });
