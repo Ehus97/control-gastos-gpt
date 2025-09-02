@@ -140,8 +140,12 @@ google.charts.load("current", { packages: ["corechart", "bar"] });
 google.charts.setOnLoadCallback(cargarDashboard);
 
 function cargarDashboard() {
-  google.script.run.withSuccessHandler(dibujarGraficos).obtenerDashboardData();
+  fetch(API_URL + "?action=dashboard")
+    .then((res) => res.json())
+    .then((data) => dibujarGraficos(data))
+    .catch((err) => console.error("Error cargando dashboard:", err));
 }
+
 
 function dibujarGraficos(data) {
   // Barras: Ingresos vs Gastos
