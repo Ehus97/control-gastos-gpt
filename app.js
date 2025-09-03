@@ -158,7 +158,11 @@ function dibujarGraficos(data) {
     document.getElementById("barChart")
   ).draw(barData, {
     title: "Ingresos vs Gastos (Mes actual)",
-    legend: { position: "none" },
+    backgroundColor: "transparent",
+    titleTextStyle: { color: '#fff' },
+    legend: { position: "none", textStyle: { color: "#fff" } },
+    hAxis: { textStyle: { color: "#fff" } },
+    vAxis: { textStyle: { color: "#fff" } }
   });
 
   // Pastel Gastos
@@ -167,7 +171,13 @@ function dibujarGraficos(data) {
   );
   new google.visualization.PieChart(document.getElementById("pieGastos")).draw(
     pieGastos,
-    { title: "Gastos por Categoría", pieHole: 0.3 }
+    { 
+      title: "Gastos por Categoría", 
+      pieHole: 0.3,
+      backgroundColor: "transparent",
+      titleTextStyle: { color: "#fff" },
+      legend: { textStyle: { color: "#fff" } }
+    }
   );
 
   // Pastel Ingresos
@@ -176,5 +186,12 @@ function dibujarGraficos(data) {
   );
   new google.visualization.PieChart(
     document.getElementById("pieIngresos")
-  ).draw(pieIngresos, { title: "Ingresos por Fuente", pieHole: 0.3 });
+  ).draw(pieIngresos, 
+    { 
+      title: "Gastos por Categoría", 
+      pieHole: 0.3,
+      backgroundColor: "transparent",
+      titleTextStyle: { color: "#fff" },
+      legend: { textStyle: { color: "#fff" } }
+    });
 }
