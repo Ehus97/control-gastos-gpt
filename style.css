@@ -187,3 +187,25 @@ button:hover, .btn:hover {
   filter: brightness(1.2);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
+
+#btnHome {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: #17a2b8;
+  border: 1px solid #17a2b8;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 18px;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  transition: background 0.2s, transform 0.2s;
+}
+
+#btnHome:hover {
+  /* background: #e6e6e6; */
+  transform: scale(1.05);
+  filter: brightness(1.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
