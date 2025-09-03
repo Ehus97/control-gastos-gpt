@@ -1,6 +1,6 @@
 // URL de tu Apps Script
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbzliCYZwewihM-4lEEJKQQ9Os3tAaB4w182uOeBHOPBf3dKRHw_7OIBz0FBwEfHSr2a/exec"; // Cambia por la URL final
+  "https://script.google.com/macros/s/AKfycbwk8iMX5hY-x4VqwOiGIIRQaz6IiT9rhp3GuA6f2ELOiNVQx3w0CL7v2sjp3aAWtRyd/exec"; // Cambia por la URL final
 
 /* ---------------- Formularios ---------------- */
 
@@ -195,3 +195,18 @@ function dibujarGraficos(data) {
       legend: { textStyle: { color: "#fff" } }
     });
 }
+
+//  Ingresos vs Gastos por Mes
+const mensualData = google.visualization.arrayToDataTable(data.ingresosYGastosPorMes);
+
+new google.visualization.ColumnChart(
+  document.getElementById("barMeses")
+).draw(mensualData, {
+  title: "Ingresos vs Gastos por Mes (Año actual)",
+  backgroundColor: "#222",
+  titleTextStyle: { color: "#fff" },
+  legend: { textStyle: { color: "#fff" } },
+  hAxis: { textStyle: { color: "#fff" } },
+  vAxis: { textStyle: { color: "#fff" } },
+  colors: ["#5cb85c", "#d9534f"] // ingresos verde, gastos rojo
+});
