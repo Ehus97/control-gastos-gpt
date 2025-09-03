@@ -150,15 +150,14 @@ function cargarDashboard() {
 function dibujarGraficos(data) {
   // Barras: Ingresos vs Gastos
   const barData = google.visualization.arrayToDataTable([
-    ["Tipo", "Monto"],
-    ["Ingresos", data.totalIngresos],
-    ["Gastos", data.totalGastos],
+    ["Tipo", "Monto", { role: "style" }],
+    ["Ingresos", data.totalIngresos, "color: #5cb85c"], // verde
+    ["Gastos", data.totalGastos, "color: #d9534f"],     // rojo
   ]);
   new google.visualization.ColumnChart(
     document.getElementById("barChart")
   ).draw(barData, {
     title: "Ingresos vs Gastos (Mes actual)",
-    colors: ["#5cb85c", "#d9534f"],
     legend: { position: "none" },
   });
 
