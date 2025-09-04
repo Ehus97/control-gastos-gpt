@@ -194,7 +194,6 @@ function dibujarGraficos(data) {
       titleTextStyle: { color: "#fff" },
       legend: { textStyle: { color: "#fff" } }
     });
-}
 
 //  Ingresos vs Gastos por Mes
 const mensualData = google.visualization.arrayToDataTable(data.ingresosYGastosPorMes);
@@ -203,10 +202,11 @@ new google.visualization.ColumnChart(
   document.getElementById("barMeses")
 ).draw(mensualData, {
   title: "Ingresos vs Gastos por Mes (Año actual)",
-  backgroundColor: "#222",
+  backgroundColor: "transparent",
   titleTextStyle: { color: "#fff" },
   legend: { textStyle: { color: "#fff" } },
   hAxis: { textStyle: { color: "#fff" } },
   vAxis: { textStyle: { color: "#fff" } },
   colors: ["#5cb85c", "#d9534f"] // ingresos verde, gastos rojo
 });
+}
