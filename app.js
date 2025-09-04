@@ -193,7 +193,7 @@ function dibujarGraficos(data) {
     document.getElementById("pieIngresos")
   ).draw(pieIngresos, 
     { 
-      title: "Gastos por Categoría", 
+      title: "Ingresos por Categoría", 
       pieHole: 0.3,
       backgroundColor: "transparent",
       titleTextStyle: { color: "#fff" },
