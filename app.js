@@ -154,10 +154,15 @@ function dibujarGraficos(data) {
     ["Ingresos", data.totalIngresos, "color: #5cb85c"], // verde
     ["Gastos", data.totalGastos, "color: #d9534f"],     // rojo
   ]);
+  const meses = [
+  "Enero","Febrero","Marzo","Abril","Mayo","Junio",
+  "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
+];
+  const mesActual = meses[new Date().getMonth()];
   new google.visualization.ColumnChart(
     document.getElementById("barChart")
   ).draw(barData, {
-    title: "Ingresos vs Gastos (Mes actual)",
+    title: "Ingresos vs Gastos " + mesActual + "",
     backgroundColor: "transparent",
     titleTextStyle: { color: '#fff' },
     legend: { position: "none", textStyle: { color: "#fff" } },
@@ -201,7 +206,7 @@ const mensualData = google.visualization.arrayToDataTable(data.ingresosYGastosPo
 new google.visualization.ColumnChart(
   document.getElementById("barMeses")
 ).draw(mensualData, {
-  title: "Ingresos vs Gastos por Mes (Año actual)",
+  title: "Ingresos vs Gastos por Mes",
   backgroundColor: "transparent",
   titleTextStyle: { color: "#fff" },
   legend: { textStyle: { color: "#fff" } },
