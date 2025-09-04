@@ -1,6 +1,6 @@
 // URL de tu Apps Script
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbwk8iMX5hY-x4VqwOiGIIRQaz6IiT9rhp3GuA6f2ELOiNVQx3w0CL7v2sjp3aAWtRyd/exec"; // Cambia por la URL final
+  "https://script.google.com/macros/s/AKfycbw6UKloli07VzT7a2X4iTYGVqhN07z5yyjywjZtIhPbs1rnfZtY6kHwEpDAFp0Q14Ht/exec"; // Cambia por la URL final
 
 /* ---------------- Formularios ---------------- */
 
@@ -214,4 +214,49 @@ new google.visualization.ColumnChart(
   vAxis: { textStyle: { color: "#fff" } },
   colors: ["#5cb85c", "#d9534f"] // ingresos verde, gastos rojo
 });
+}
+
+
+function cargarUltimosMovimientos() {
+  fetch(API_URL + "?action=ultimosMovimientos")
+    .then(res => res.json())
+    .then(movs => {
+      const cont = document.getElementById("listaMovimientos");
+      if (!cont) return;
+
+      // Agrupar por fecha
+      const porFecha = {};
+      movs.forEach(m => {
+        let fecha = new Date(m.fecha);
+        let fechaStr = fecha.toLocaleDateString("es-MX", { day: "numeric", month: "short" });
+        if (!porFecha[fechaStr]) porFecha[fechaStr] = [];
+        porFecha[fechaStr].push(m);
+      });
+
+      // Renderizar
+      cont.innerHTML = "";
+      for (let fecha in porFecha) {
+        let bloque = `<div class="dia"><h3>${fecha}</h3>`;
+        porFecha[fecha].forEach(m => {
+          const color = m.tipo === "ingreso" ? "#5cb85c" : "#d9534f"; // verde o rojo
+          bloque += `
+            <div class="mov">
+              <div class="info">
+                <div class="desc">${m.descripcion || "(sin descripción)"}</div>
+                <div class="sub">${m.subcategoria || ""}</div>
+              </div>
+              <div class="monto" style="color:${color}">$${Number(m.monto).toFixed(2)}</div>
+            </div>
+          `;
+        });
+        bloque += `</div>`;
+        cont.innerHTML += bloque;
+      }
+    })
+    .catch(err => console.error("Error cargando movimientos:", err));
+}
+
+// Ejecutar solo en index
+if (document.getElementById("listaMovimientos")) {
+  cargarUltimosMovimientos();
 }
