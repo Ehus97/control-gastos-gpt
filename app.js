@@ -206,7 +206,7 @@ const mensualData = google.visualization.arrayToDataTable(data.ingresosYGastosPo
 new google.visualization.ColumnChart(
   document.getElementById("barMeses")
 ).draw(mensualData, {
-  title: "Ingresos vs Gastos por Mes",
+  title: "Ingresos vs Gastos Anual",
   backgroundColor: "transparent",
   titleTextStyle: { color: "#fff" },
   legend: { textStyle: { color: "#fff" } },
