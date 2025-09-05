@@ -242,7 +242,7 @@ function cargarUltimosMovimientos() {
           bloque += `
             <div class="mov">
               <div class="info">
-                <div class="desc">${m.descripcion || "(sin descripción)"}</div>
+                <div class="desc">${m.descripcion || m.subcategoria}</div>
                 <div class="sub">${m.subcategoria || ""}</div>
               </div>
               <div class="monto" style="color:${color}">$${Number(m.monto).toFixed(2)}</div>
