@@ -6,7 +6,7 @@ const API_URL =
 
 // Subcategorías dinámicas para gastos
 const categorias = {
-  Vivienda: ["Agua", "Luz", "Gas", "Empleada Doméstica", "Otros"],
+  Vivienda: ["Agua", "Luz", "Gas", "Internet", "Empleada Doméstica", "Otros"],
   Coches: [
     "Combustible",
     "Seguros",
